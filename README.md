@@ -144,6 +144,10 @@ Terraform will also output the Kubernetes running services and pods via tabular 
 To access Kubernetes dashboard, or any of the other web interfaces running in the cluster:
 SSH tunnel to the IP address of the Kubernetes dashboard pod &/or other pods via the public/NAT IP address assigned to the compute instance. Keys are located in the directory `./ssh`.
 
+1) go to master public IP address
+2) kubectl proxy --address 0.0.0.0 --accept-hosts '.*' --port 8080
+3) http://<public ip address>:8080/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+
 To access the Traefik dashboard, browse to the public IP address of the instance on port 8080.
 
 _**Keys are provided for simplicity only, for long running deployments it is strongly recommended that you replace the provided keys prior to deployment.**_
